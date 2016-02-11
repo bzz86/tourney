@@ -51,3 +51,6 @@ CREATE TABLE `tourney_participant` (
 	FOREIGN KEY (tourney_id) REFERENCES tourney(id) ON UPDATE CASCADE,  
 	FOREIGN KEY (participant_id) REFERENCES participant(id) ON UPDATE CASCADE);
 );
+
+ALTER TABLE `participant`
+ADD UNIQUE INDEX `participant_unique` (`name`, `type`);

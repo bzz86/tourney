@@ -43,6 +43,22 @@ class Participant{
  
     }
 	
+	function checkExist(){
+		$query = "SELECT TOP 1 id 
+				FROM
+					" . $this->table_name . "
+				WHERE name = ? AND type=?"
+	 
+		$stmt = $this->conn->prepare( $query );
+	 
+		$stmt->bindParam(1, $this->name);
+		$stmt->bindParam(2, $this->type);
+		
+		$stmt->execute();
+		
+		return ($stmt->rowCount() > 0);
+	}
+	
 
 	function update(){
 	 
